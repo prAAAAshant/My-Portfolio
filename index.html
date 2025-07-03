@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prashant. | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Monospaceland:wght@600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="logo" onclick="location.href='index.html'">
+      <span class="logo-main">Prashant</span><span class="logo-dot">.</span>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="section home-section">
+    <div class="home-content">
+      <h2>Hello I'm</h2>
+      <h1>Prashant Jha</h1>
+      <p>Computer Science Student</p>
+      <div class="animated-skills">
+        <span id="skill-slider"></span>
+      </div>
+    </div>
+    <canvas id="matrix-canvas"></canvas>
+  </section>
+  <script>
+    // Matrix Falling Code Animation (right side only)
+    const canvas = document.getElementById('matrix-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+
+      function resizeMatrixCanvas() {
+        // Set canvas height to section height, width to 45vw (matches CSS)
+        const section = document.querySelector('.home-section');
+        canvas.height = section.offsetHeight;
+        canvas.width = canvas.offsetWidth;
+      }
+      resizeMatrixCanvas();
+      window.addEventListener('resize', resizeMatrixCanvas);
+
+      const matrixChars = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const fontSize = 18;
+      let columns, drops;
+
+      function initDrops() {
+        columns = Math.floor(canvas.width / fontSize);
+        drops = [];
+        for (let x = 0; x < columns; x++)
+          drops[x] = Math.random() * canvas.height / fontSize;
+      }
+      initDrops();
+      window.addEventListener('resize', initDrops);
+
+      function drawMatrix() {
+        // Make the background fully transparent so only letters are visible
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = fontSize + "px monospace";
+        ctx.fillStyle = "#3ac261";
+        for (let i = 0; i < columns; i++) {
+          const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+          drops[i] += 0.3; // Slower speed
+        }
+      }
+      setInterval(drawMatrix, 70); // Slower interval
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Monospaceland', monospace;
+  background-color: #2d2f30;
+  color: #fafbfc;
+  background: linear-gradient(-45deg, #232526, #0c7029, #2d2f30, #232526);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease forwards;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  100% {background-position: 100% 50%;}
+}
+
+h2{
+    color: #3ac261;
+    font-size: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: #fafbfc;
+  transition: all 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d2f30;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 29px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.logo-main {
+  color: #fafbfc;
+}
+
+.logo-dot {
+  color: #3ac261;
+}
+
+/* Navigation with Animated Underline */
+.nav ul {
+  list-style: none;
+  display: flex;
+  font-size: 1.2rem;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  position: relative;
+  color: #fafbfc;
+  padding: 4px 0;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: #3ac261;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover {
+  color: #3ac261;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Sections */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.home-content h2 {
+  font-size: 3rem;
+  color: #fafbfc;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.home-content h1 {
+  font-size: 3rem;
+  color: #3ac261;
+  margin-bottom: 0.4rem;
+  margin-top: 0;
+}
+
+.home-content p {
+  font-size: 1.2rem;
+  color: #fafbfc;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.animated-skills {
+  margin-top: 1.5rem;
+  height: 2.5rem;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.5rem;
+  color: #3ac261;
+  min-width: 250px;
+  font-weight: bold;
+}
+
+#skill-slider {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.5s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+  will-change: transform, opacity;
+  /* Removed text-shadow (black border) */
+}
+
+/* Matrix Canvas (right side only on home) */
+#matrix-canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45vw;
+  height: 100%;
+  max-width: 600px;
+  min-width: 250px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  background: transparent !important;
+}
+.home-section {
+  position: relative;
+  overflow: hidden;
+}
+.home-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* About */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-img img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.about-img {
+  position: relative;
+  display: inline-block;
+}
+
+/* Stylish 3D triangle behind the image */
+.about-img::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: -60px;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-bottom: 260px solid #3ac261;
+  filter: drop-shadow(0 8px 24px rgba(58,194,97,0.25));
+  transform: rotate(-18deg) skewY(-8deg);
+  z-index: 0;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.about-photo {
+  position: relative;
+  z-index: 1;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text p {
+    font-size: 1.7rem;
+}
+
+/* Skills */
+.skills-section h2, .skills-section h3 {
+  margin-bottom: 1rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.skill {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #3ac261;
+  background-color: #fafbfc;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.skill img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Projects */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project {
+  flex: 1 1 calc(50% - 1rem);
+  background-color: #2d2f30;
+  border: 1px solid #3ac261;
+  padding: 1rem;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.project h3 {
+  margin: 0;
+  cursor: pointer;
+  color: #fafbfc;
+}
+
+.project-hover {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-top: 0.5rem;
+}
+
+.project-hover p, .project-hover a {
+  margin: 0.3rem 0;
+  display: block;
+  color: #fafbfc;
+}
+
+.github-icon {
+  width: 37px;
+  height: 37px;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+.github-icon:hover {
+  transform: scale(1.15);
+}
+
+/* Contact */
+.contact-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.contact-box {
+  background: #232526;
+  border: 2px solid #3ac261;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 140px;
+  min-height: 140px;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 24px rgba(58,194,97,0.08);
+}
+
+.contact-box img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+
+.contact-label {
+  margin-top: 0.7rem;
+  font-size: 1.1rem;
+  color: #fafbfc;
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+
+.contact-box:hover {
+  background: #3ac261;
+  box-shadow: 0 8px 32px rgba(58,194,97,0.18);
+  transform: translateY(-6px) scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .projects-grid,
+  .skills-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project {
+    flex: 1 1 100%;
+  }
+
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem; 
+  }
+
+  .about-img img {
+    width: 220px;
+    max-width: 80vw;
+  }
+
+  .about-img::before {
+    top: 18px;
+    left: -35px;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-bottom: 160px solid #3ac261;
+  }
+
+  .skill {
+    width: 60px;
+    height: 60px;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .contact-box {
+    width: 80vw;
+    min-width: unset;
+    padding: 1.5rem 0;
+  }
+
+  #matrix-canvas {
+    width: 100vw !important;
+    min-width: unset;
+  }
+}
